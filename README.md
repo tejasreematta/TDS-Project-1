@@ -3,7 +3,7 @@
 # GitHub User Analysis in Seattle
 
 - This project analyzes GitHub users in Seattle with over 200 followers, focusing on their repositories and activity.
-- One surprising finding is that the correlation between followers and public repositories is only 0.203, indicating other factors influence follower counts.
+- One surprising finding is that though there is a correlation between followers and public repositories, it is only 0.203, indicating other factors influence follower counts.
 - Developers should consider enhancing their profiles and engaging more with the community, as follower counts are not solely dependent on repository numbers.
 
 ## Data Scraping Explanation
