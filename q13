@@ -1,0 +1,30 @@
+# Some developers write long bios. Does that help them get more followers? 
+# What's the impact of the length of their bio (in Unicode words, split by whitespace) with followers? (Ignore people without bios)
+
+import pandas as pd
+import statsmodels.api as sm
+
+# Load the users.csv file
+users_df = pd.read_csv('users.csv')
+
+# Calculate the length of the bio in words
+users_df['bio_word_count'] = users_df['bio'].str.split().str.len().fillna(0)
+
+# Filter out users without bios
+filtered_df = users_df[users_df['bio_word_count'] > 0]
+
+# Define the independent variable (X) and dependent variable (Y)
+X = filtered_df['bio_word_count']
+Y = filtered_df['followers']
+
+# Add a constant to the independent variable
+X = sm.add_constant(X)
+
+# Fit the regression model
+model = sm.OLS(Y, X).fit()
+
+# Get the slope (coefficient) for bio_word_count
+slope = model.params['bio_word_count']
+
+# Print the slope rounded to 3 decimal places
+print(f"{slope:.3f}")
